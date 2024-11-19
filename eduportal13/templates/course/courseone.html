@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width , initial-scale=1.0">
+        <style>
+            body{
+                background-color: black;
+                color: seashell;
+            }
+        </style>
+        <title>Django</title>
+    </head>
+
+    <body>
+        <h1>{{dt | date:'D d M Y'}}</h1>
+        <h1>{{dt | time:'H:i'}}</h1>
+        <h1>{{dt | date:'SHORT_DATE_FORMAT'}}</h1>
+        <h1>{{dt | time:'TIME_FORMAT'}}</h1>
+        <h1>Hello </h1><h1 style="color: red;">{{nm}}</h1>
+
+
+        <h2>Example 5.1</h2>
+        <h3>{{p1}}</h3>
+        <h3>{{p2}}</h3>
+        <h3>{{p3}}</h3>
+
+        <h2>Example 5.2</h2>
+        <h3>{{p1 | floatformat}}</h3>
+        <h3>{{p2 | floatformat}}</h3>
+        <h3>{{p3 | floatformat}}</h3>
+
+        <h2>Example 5.3</h2>
+        <h3>{{p1 | floatformat:3}}</h3>
+        <h3>{{p2 | floatformat:3}}</h3>
+        <h3>{{p3 | floatformat:3}}</h3>
+
+        <h2>Example 5.4</h2>
+        <h3>{{p1 | floatformat:0}}</h3>
+        <h3>{{p2 | floatformat:0}}</h3>
+        <h3>{{p3 | floatformat:0}}</h3>
+
+        <h2>Example 5.5</h2>
+        <h3>{{p1 | floatformat:-3}}</h3>
+        <h3>{{p2 | floatformat:-3}}</h3>
+        <h3>{{p3 | floatformat:-3}}</h3>
+
+        {% if nm %}
+        <h3>Hello {{nm}}</h3>
+        {% endif %}
+
+        <h2>Example 8.1</h2>
+        {% if nm or st %}
+        <h3>{{st}} Seats are Available for {{nm}} Course</h3>
+        {% endif %}
+
+        <h2>Example 8.2</h2>
+        {% if nm or st %}
+        <h3>{{st}} Seats are Available for {{nm}} Course</h3>
+        {% endif %}
+
+        <h2>Example 8.3</h2>
+        {% if nm or st %}
+        <h3> Seats not Available </h3>
+        {% endif %}
+
+        {% if not st %}
+        <h3>Seats Not Available</h3>
+        {% endif %}
+
+
+        {% if nm == 'Django' %}
+        <h3>Hello {{nm}}</h3>
+        {% endif %}
+
+        {% if nm == 'fjango' %}
+        <h3>Hello {{nm}}</h3>
+        {% endif %}
+
+        {% if nm == 'Django' and st == 5 %}
+        <h3>{{st}} Seats are Available for {{nm}} Course</h3>
+        {% endif %}
+
+        {% if nm == 'Django' or st == 5 %}
+        <h3>{{st}} Seats are Available for {{nm}} Course</h3>
+        {% endif %}
+
+        {% if not st == 3 %}
+        <h3>Seats Not Available</h3>
+        {% endif %}
+
+        {% if nm|length >= 4 %}
+        <h3>Hello {{nm}}</h3>
+        {% endif %}
+
+        {% if nm %}
+        <h3>Hello {{nm}}</h3>
+        {% else %}
+        <h3>No Course Available</h3>
+        {% endif %}
+
+        {% if nm == 'Django'%}
+        <h3>Hello {{nm}}</h3>
+        {% else %}
+        <h3>No Course Available</h3>
+        {% endif %}
+
+        {% if nm == 'Fjango'%}
+        <h3>Hello {{nm}}</h3>
+        {% else %}
+        <h3>No Course Available</h3>
+        {% endif %}
+
+        {% if nm %}
+        <h3>Hello {{nm}}</h3>
+        {% elif st %}
+        <h3>Seats {{st}}</h3>
+        {% else %}
+        <h3>No Course Available</h3>
+        {% endif %}
+
+        {% if nm == 'Django'%}
+        <h3>Hello {{nm}}</h3>
+        {% elif st == 5 %}
+        <h3>Seats {{st}}</h3>
+        {% else %}
+        <h3>No Course Available</h3>
+        {% endif %}
+
+{{name}}
+<br><br>
+
+<ul>
+{% for n in name%}
+<li>{{n}}</li>
+{% endfor %}
+</ul>
+
+
+
+<ul>
+    {% for n in name reversed%}
+    <li>{{n}}</li>
+    {% endfor %}
+    </ul>
+
+    
+<ul>
+    {% for n in name%}
+    <li>{{n}}</li>
+    {% empty %}
+    <h3> Nothing Anything at Here ! </h3>
+    {% endfor %}
+    </ul>
+
+    {% for n in name %}
+    {{forloop.counter}} {{n}} <br>
+    {% endfor %}
+
+    <br>
+    {% for n in name %}
+    {{forloop.counter0}} {{n}} <br>
+    {% endfor %}
+    <br>
+
+    {% for n in name %}
+    {{forloop.first}} {{n}} <br>
+    {% endfor %}
+    <br>
+
+    {% for n in name %}
+    {{forloop.last}} {{n}} <br>
+    {% endfor %}
+
+    <br>
+    {% for n in name %}
+    {{forloop.revcounter}} {{n}} <br>
+    {% endfor %}
+
+    
+    <br>
+    {% for n in name %}
+    {{forloop.revcounter0}} {{n}} <br>
+    {% endfor %}
+
+
+    <h3>{{student}}</h3>
+    <br>
+    <h3>{{student.stu1}}</h3><br>
+    <h3>{{student.stu2}}</h3><br>
+    <h3>{{student.stu3}}</h3><br>
+    <h3>{{student.stu4}}</h3><br>
+
+    <h3>{{student.stu1.name}}</h3><br>
+    <h3>{{student.stu1.roll}}</h3><br>
+    <h3>{{student.stu2.name}}</h3><br>
+    <h3>{{student.stu2.roll}}</h3><br>
+    <h3>{{student.stu3.name}}</h3><br>
+    <h3>{{student.stu3.roll}}</h3><br>
+    <h3>{{student.stu4.name}}</h3><br>
+    <h3>{{student.stu4.roll}}</h3><br>
+
+
+    <br>
+    {{data}}<br>
+    <br>
+    {% for key,value in data.items %}
+    {{key}} = {{value}}
+    {% endfor %}
+
+
+    <br><br><br>
+    {{data}}
+
+    <br>
+    {{data}}<br>
+    <br>
+    {% for key,value in data.items %}
+    {{key}} <br>
+    {% endfor %}
+    <br>
+    {% for key,value in data.items %}
+    {{key}} = {{value}}<br>
+    {% endfor %}
+
+    <br><br><br>
+    {% for key,value in data.items %}
+    {{key}} <br>
+    {% for k , v in data.items %}
+    {{k}} = {{v}}<br>
+    {% endfor %}
+    {% endfor %}
+
+<br><br><br><br>
+
+{% for key,value in data.items %}
+{{key}} <br>
+{% for k , v in value.items %}
+{{k}} = {{v}}<br>
+{% endfor %}
+{% endfor %}
+
+
+<br><br><br><br>
+
+{% for key,value in data.items %}
+{{key}} = {{value}} <br>
+{% for k , v in value.items %}
+{{k}} = {{v}}<br>
+{% endfor %}
+{% endfor %}
+
+
+<br><br><br><br>
+
+{% for key,value in data.items %}
+{{key}} = {{value}}<br>
+{% for k , v in value.items %}
+{{forloop.parentloop.counter}} {{k}} = {{v}}<br>
+{% endfor %}
+{% endfor %}
+
+
+<br><br><br><br>
+
+{% for key,value in data.items %}
+{{key}} = {{value}}<br>
+{% for k , v in value.items %}
+{{forloop.parentloop.counter0}} {{k}} = {{v}}<br>
+{% endfor %}
+{% endfor %}
+
+
+<h2>Example 1 </h2>
+<h3>Hello {{nm}}</h3>
+
+    </body>
+</html>
